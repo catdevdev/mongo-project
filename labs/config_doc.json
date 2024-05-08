@@ -1,0 +1,8 @@
+{
+    "fields": {
+        "name": {"type": "name"},
+        "address": {"type": "address"},
+        "email": {"type": "email"},
+        "description": {"type": "text"}
+    }
+}

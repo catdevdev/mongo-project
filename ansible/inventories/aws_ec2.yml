@@ -1,0 +1,14 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - eu-central-1
+hostnames:
+  - tag:Name
+
+compose:
+  ansible_host: public_ip_address
+  instance_role: tags['Role']
+  instance_name: tags['Name']
+
+keyed_groups:
+  - prefix: ""
+    key: tags['Role']

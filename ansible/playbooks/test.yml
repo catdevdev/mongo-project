@@ -1,0 +1,9 @@
+---
+- name: Display EC2 Tags
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Print EC2 instance tags
+      ansible.builtin.debug:
+        msg: "Host {{ inventory_hostname }} has Role {{ instance_role }} and Name {{ instance_name }}"

@@ -1,0 +1,9 @@
+---
+- name: Display IP Addresses of All Hosts
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Print IP Addresses
+      debug:
+        msg: "The IP address of {{ inventory_hostname }} is {{ ansible_facts['eth0']['ipv4']['address'] }}"

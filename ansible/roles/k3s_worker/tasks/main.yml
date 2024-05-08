@@ -1,0 +1,14 @@
+# ---
+# - name: Fetch IP from master
+#   debug:
+#     msg: "The IP address of k3s master is {{ hostvars['intance-0']['k3s_master_ip'] }}"
+# - name: Save hostvars to a file
+#   delegate_to: localhost
+#   run_once: true
+#   copy:
+#     content: "{{ hostvars | to_nice_yaml }}"
+#     dest: "/Users/catdev/pr/mongo-project/ansible/playbooks/hostvars_specific_3.yaml"
+- name: Install k3s Worker
+  shell: "curl -sfL https://get.k3s.io | K3S_URL='https://{{ hostvars['instance-0']['ansible_default_ipv4']['address'] }}:6443' K3S_TOKEN='{{ hostvars['instance-0']['k3s_node_token'] }}' sh -"
+  args:
+    creates: /usr/local/bin/k3s

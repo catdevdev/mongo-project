@@ -1,0 +1,28 @@
+---
+- name: Set and Use Variables Across Hosts
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Gather facts from all hosts
+      setup:
+
+- name: Set IP variable on the master
+  hosts: _k3s_master
+  tasks:
+    - name: Set fact for IP Address of k3s master
+      set_fact:
+        k3s_master_ip: "{{ ansible_default_ipv4.address }}"
+
+- name: Print IP variable on the worker and save hostvars
+  hosts: _k3s_worker
+  tasks:
+    - name: Fetch IP from master
+      debug:
+        msg: "The IP address of k3s master is {{ hostvars['intance-0']['k3s_master_ip'] }}"
+    - name: Save hostvars to a file
+      delegate_to: localhost
+      run_once: true
+      copy:
+        content: "{{ hostvars | to_nice_yaml }}"
+        dest: "/Users/catdev/pr/mongo-project/ansible/playbooks/hostvars_specific.yaml"

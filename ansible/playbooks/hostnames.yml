@@ -1,0 +1,15 @@
+---
+- name: Gather IP Address from k3s_master
+  hosts: _k3s_master
+  tasks:
+    - name: Get the IP address
+      ansible.builtin.set_fact:
+        master_ip: "{{ ansible_default_ipv4.address }}"
+      delegate_to: "{{ inventory_hostname }}"
+
+- name: Use IP Address on k3s_worker
+  hosts: _k3s_worker
+  tasks:
+    - name: Print the IP Address of k3s_master
+      debug:
+        msg: "The IP address of k3s_master is {{ hostvars['k3s_master'].master_ip }}"

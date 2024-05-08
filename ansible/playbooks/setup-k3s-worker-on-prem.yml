@@ -1,0 +1,16 @@
+---
+- name: Install k3s on Master Node
+  hosts: _k3s_master
+  become: yes
+  roles:
+    - k3s_master
+
+- name: Install k3s on Worker On Prem Nodes
+  hosts: _k3s_worker_on_prem
+  become: yes
+  vars_prompt:
+    - name: k3s_master_ip
+      prompt: "Please enter the public IP address of the K3S master node"
+      private: no
+  roles:
+    - k3s_worker_on_prem

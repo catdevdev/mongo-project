@@ -1,0 +1,6 @@
+---
+- name: Setup K3s Worker Nodes
+  hosts: _k3s_worker
+  become: true
+  roles:
+    - k3s_worker

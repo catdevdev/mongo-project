@@ -1,0 +1,9 @@
+---
+- name: Display All Host Variables
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+    - name: Print All Host Variables
+      debug:
+        var: hostvars[inventory_hostname]

@@ -1,0 +1,9 @@
+all:
+  children:
+    _k3s_worker_on_prem:
+      hosts:
+        on-prem-home:
+          ansible_host: 109.200.233.195
+          ansible_user: ubuntu
+          ansible_ssh_pass: 4311067vladvk
+          ansible_connection: ssh

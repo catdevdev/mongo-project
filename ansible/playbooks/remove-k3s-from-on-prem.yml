@@ -1,0 +1,13 @@
+---
+- name: Uninstall K3s Agent
+  hosts: _k3s_worker_on_prem
+  become: true
+
+  tasks:
+    - name: Execute K3s Agent uninstall script
+      ansible.builtin.shell: /usr/local/bin/k3s-agent-uninstall.sh
+      register: result
+
+    - name: Print script output
+      ansible.builtin.debug:
+        msg: "{{ result.stdout }}"

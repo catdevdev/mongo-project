@@ -1,0 +1,6 @@
+source venv/bin/activate
+ansible-inventory -i ./invertories/aws_ec2.yml --list | jq '.'
+ansible-playbook ./playbooks/setup-k3s-cluster.yml
+ansible-playbook ./playbooks/ping.yml
+
+/etc/systemd/system/k3s.service ( master ) https://github.com/k3s-io/k3s/issues/6879

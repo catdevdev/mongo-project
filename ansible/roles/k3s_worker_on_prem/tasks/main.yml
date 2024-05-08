@@ -1,0 +1,5 @@
+---
+- name: Install k3s Worker
+  shell: "curl -sfL https://get.k3s.io | K3S_URL='https://{{ hostvars['instance-0']['ansible_host'] }}:6443' K3S_TOKEN='{{ hostvars['instance-0']['k3s_node_token'] }}' sh -s"
+  args:
+    creates: /usr/local/bin/k3s
