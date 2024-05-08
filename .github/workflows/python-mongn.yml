@@ -35,4 +35,4 @@ jobs:
       - name: Run Script
         run: |
           source venv/bin/activate
-          python lab4.py
+          python lab5.py
