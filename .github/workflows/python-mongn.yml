@@ -2,6 +2,8 @@ name: Run Python Script
 
 on:
   push:
+    branchers:
+      - master
     paths:
       - "labs/**"
   workflow_dispatch:
@@ -16,6 +18,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
 
       - name: Create and activate virtual environment
         run: |
