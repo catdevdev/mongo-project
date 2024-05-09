@@ -23,4 +23,4 @@ jobs:
         run: docker build -t my-python-app .
 
       - name: Run Script in Docker
-        run: docker run my-python-app python /path/to/lab5.py
+        run: docker run my-python-app
