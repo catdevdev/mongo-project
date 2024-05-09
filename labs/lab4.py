@@ -5,7 +5,7 @@ import random
 fake = Faker()
 
 # MongoDB setup
-client = MongoClient('mongodb://neko-neki:neko-neki@3.79.243.95:32000')
+client = MongoClient('mongodb://neko-neki:neko-neki@18.153.75.45:32000')
 db = client.lab4
 col1 = db.collection1
 col2 = db.collection2
