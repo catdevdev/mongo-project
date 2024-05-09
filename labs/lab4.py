@@ -4,7 +4,6 @@ import random
 
 fake = Faker()
 
-# MongoDB setup
 client = MongoClient('mongodb://neko-neki:neko-neki@18.153.75.45:32000')
 db = client.lab4
 col1 = db.collection1
@@ -14,11 +13,9 @@ def create_documents():
     col1_data = [{'_id': i, 'name': fake.name()} for i in range(1, 1000001)]
     col2_data = [{'_id': i, 'name': fake.name()} for i in range(1, 1000001)]
 
-    # Insert data into collections
     col1.insert_many(col1_data)
     col2.insert_many(col2_data)
 
-    # Update documents with cross-references
     for i in range(1000, 1000001):
         col1.find_one_and_update({'_id': i}, {'$set': {'friend': random.randint(1, 999999)}})
         col2.find_one_and_update({'_id': i}, {'$set': {'friend': random.randint(1, 999999)}})
