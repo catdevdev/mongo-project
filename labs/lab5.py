@@ -27,9 +27,9 @@ def display_document_chain(start_id, max_depth):
 
 def main():
     N = 10 
-    M = 10
-    i = 1000 
-    MAXK = 10 
+    M = 10  
+    i = 1000  
+    MAXK = 10  
 
     print("First N documents from Collection 1:")
     initial_docs_col1 = fetch_initial_documents(col1, N)
